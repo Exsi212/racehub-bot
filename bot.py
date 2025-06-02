@@ -1,12 +1,13 @@
 from aiogram import Bot, Dispatcher, types
 from aiogram.enums import ParseMode
+from aiogram.types import Message
+from aiogram.filters import Command
 import asyncio
 import datetime
 import json
-import os  # добавлено
+import os
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")  # изменено
-
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 bot = Bot(token=BOT_TOKEN, parse_mode=ParseMode.HTML)
 dp = Dispatcher()
 
@@ -22,20 +23,20 @@ def get_next_gp():
             return gp
     return None
 
-@dp.message(commands=["start"])
-async def start(message: types.Message):
+@dp.message(Command("start"))
+async def start(message: Message):
     await message.answer("🏁 Привет! Я RaceHub Bot. Вот что я умею:\n\n/next — следующий Гран-при\n/calendar — весь календарь сезона")
 
-@dp.message(commands=["next"])
-async def next_gp(message: types.Message):
+@dp.message(Command("next"))
+async def next_gp(message: Message):
     gp = get_next_gp()
     if gp:
         await message.answer(f"🚥 Следующий Гран-при:\n<b>{gp['name']}</b>\n📍 {gp['location']}\n📅 {gp['date']}")
     else:
         await message.answer("Все гонки сезона уже завершены! 🎉")
 
-@dp.message(commands=["calendar"])
-async def calendar(message: types.Message):
+@dp.message(Command("calendar"))
+async def calendar(message: Message):
     text = "📆 <b>Календарь Гран-при 2025:</b>\n\n"
     for gp in CALENDAR:
         text += f"• <b>{gp['name']}</b> — {gp['date']}\n"
