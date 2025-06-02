@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Spanish Grand Prix",
+        "location": "Barcelona",
+        "date": "2025-06-22"
+    },
+    {
+        "name": "Austrian Grand Prix",
+        "location": "Spielberg",
+        "date": "2025-06-29"
+    },
+    {
+        "name": "British Grand Prix",
+        "location": "Silverstone",
+        "date": "2025-07-06"
+    },
+    {
+        "name": "Hungarian Grand Prix",
+        "location": "Budapest",
+        "date": "2025-07-20"
+    }
+]
