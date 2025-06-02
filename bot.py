@@ -3,8 +3,9 @@ from aiogram.enums import ParseMode
 import asyncio
 import datetime
 import json
+import os  # добавлено
 
-BOT_TOKEN = "your_bot_token_here"
+BOT_TOKEN = os.getenv("BOT_TOKEN")  # изменено
 
 bot = Bot(token=BOT_TOKEN, parse_mode=ParseMode.HTML)
 dp = Dispatcher()
